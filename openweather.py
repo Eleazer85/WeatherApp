@@ -46,7 +46,7 @@ class weatherApps():
         self.map.grid(row=0,column=0,padx=10,pady=30)
         
         #add and style a label
-        self.label_city = customtkinter.CTkLabel(master=self.tab1, text="Enter City Name:",font=("Times New Roman",20),text_color="White")
+        self.label_city = customtkinter.CTkLabel(master=self.tab1, text="Enter City / Subdistrict Name:",font=("Times New Roman",20),text_color="White")
         self.label_city.grid(row=1,column=0,padx=(85,0),pady=(30,0))
         
         #add an entry
@@ -65,8 +65,7 @@ class weatherApps():
         
         self.info_temp = customtkinter.CTkLabel(master=self.tabinf,text=f"{round(api['main']['temp']-273.15)} °C / {round(((api['main']['temp']-273.15)*9)/5)} °F",font=("Times New Roman",50),wraplength=200,text_color="White")
         self.info_temp.place(relx=0.6,rely=0.35,anchor="w")
-        
-
+    
         if api["weather"][0]["main"] == "Rain":
             self.info_symbol = customtkinter.CTkImage(light_image=Image.open("raining.png"),dark_image=Image.open("raining.png"),size=(200,140))
             # Create a label to display the image
@@ -87,7 +86,7 @@ class weatherApps():
         self.tab_other.place(relx=0.565,rely=0.72,anchor="w")
         self.other = self.tab_other.add("Other Data")
         
-        self.city = customtkinter.CTkLabel(master=self.other,text=f"City: {api['name']}",font=("Times New Roman",20),text_color="White")
+        self.city = customtkinter.CTkLabel(master=self.other,text=f"City / Subdistrict: {api['name']}",font=("Times New Roman",20),text_color="White")
         self.city.grid(row=0,column=0,padx=(5,130) , pady=(40,10))
         
         self.info_humid = customtkinter.CTkLabel(master=self.other,text=f"Humidity: {api['main']['humidity']} %",font=("Times New Roman",20),text_color="White")
@@ -125,7 +124,30 @@ class weatherApps():
         else: 
             api = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={location.latitude}&lon={location.longitude}&appid={API_KEY}")
             api = json.loads(api.content)
-            print(api)
+            
+            self.city.configure(text=f"City / Subdistrict: {city_name} , {api['name']}")
+            self.info_humid.configure(text=f"Humidity: {api['main']['humidity']} %")
+            self.Pressure.configure(text=f"Pressure: {api['main']['pressure']} hPa")
+            self.Wind_spd.configure(text=f"Wind speed: {api['wind']['speed']} m/s")
+            self.Wind_direction.configure(text=f"Wind direction: {api['wind']['deg']}°")
+            
+            self.map.set_position(location.latitude,location.longitude)
+            self.map.set_marker(location.latitude,location.longitude,text=f"Your Location\nLatitude: {location.latitude}\nLongitude: {location.longitude}")
+            
+            self.info_temp.configure(text=f"{round(api['main']['temp']-273.15)} °C / {round(((api['main']['temp']-273.15)*9)/5)} °F",font=("Times New Roman",50),wraplength=200,text_color="White")
+            self.info_weather.configure(text=f"{api['weather'][0]['main']}")
+            
+            if api["weather"][0]["main"] == "Rain": 
+                self.info_symbol.configure(light_image=Image.open("raining.png"),dark_image=Image.open("raining.png"),size=(200,140))
+            elif api["weather"][0]["main"] == "Haze": 
+                self.info_symbol.configure(light_image=Image.open("haze.png"),dark_image=Image.open("haze.png"),size=(200,140))
+            elif api["weather"][0]["main"] == "Clouds": 
+                self.info_symbol.configure(light_image=Image.open("clouds.png"),dark_image=Image.open("clouds.png"),size=(200,140))
+            elif api["weather"][0]["main"] == "Clear": 
+                self.info_symbol.configure(light_image=Image.open("clear.png"),dark_image=Image.open("clear.png"),size=(200,140))
+                
+            self.image_label.configure(image=self.info_symbol)
+        
 
 if __name__ == "__main__":
     weatherApps()
