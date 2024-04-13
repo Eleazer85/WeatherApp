@@ -105,6 +105,7 @@ class weatherApps():
     
     def error(self,error_message):
         error_popup = customtkinter.CTkToplevel(self.root)
+        error_popup.grab_set()
         error_popup.geometry("400x130")
         error_popup.title("Error")
         
@@ -139,14 +140,16 @@ class weatherApps():
             
             if api["weather"][0]["main"] == "Rain": 
                 self.info_symbol.configure(light_image=Image.open("raining.png"),dark_image=Image.open("raining.png"),size=(200,140))
+                self.image_label.configure(image=self.info_symbol)
             elif api["weather"][0]["main"] == "Haze": 
                 self.info_symbol.configure(light_image=Image.open("haze.png"),dark_image=Image.open("haze.png"),size=(200,140))
+                self.image_label.configure(image=self.info_symbol)
             elif api["weather"][0]["main"] == "Clouds": 
                 self.info_symbol.configure(light_image=Image.open("clouds.png"),dark_image=Image.open("clouds.png"),size=(200,140))
+                self.image_label.configure(image=self.info_symbol)
             elif api["weather"][0]["main"] == "Clear": 
                 self.info_symbol.configure(light_image=Image.open("clear.png"),dark_image=Image.open("clear.png"),size=(200,140))
-                
-            self.image_label.configure(image=self.info_symbol)
+                self.image_label.configure(image=self.info_symbol)
         
 
 if __name__ == "__main__":
