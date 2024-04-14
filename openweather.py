@@ -8,7 +8,7 @@ from tkinter import ttk
 import customtkinter
 from PIL import Image
 
-API_KEY = "c18122a1d8acf06136ce9ec62f2ce9dc"
+API_KEY = "API_KEY"
 
 class weatherApps():
     def __init__(self) -> None:
