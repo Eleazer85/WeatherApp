@@ -5,7 +5,7 @@ A project to create a weather app using tkinter
 I use several model such as:
 * customtkinter: `pip install customtkinter`
 * PIL / Pillow: `pip install pillow`
-* tkintermapreview: `pip install tkintermapview
+* tkintermapreview: `pip install tkintermapview`
 * geopy: `pip install geopy`
 
 ## API KEY
