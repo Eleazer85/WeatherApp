@@ -2,9 +2,7 @@ import requests
 import json
 from geopy.geocoders import Nominatim
 import geocoder
-import tkinter as tk
 import tkintermapview
-from tkinter import ttk
 import customtkinter
 from PIL import Image
 
