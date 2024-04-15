@@ -10,7 +10,7 @@ I use several model such as:
 
 ## API KEY
 If you already have an Openweather API key, change the `API_KEY` in the `openweather.py` code in line 9 <br>
-For exmple: 
+For exmple: <br>
 ```API_KEY = "API_KEY" ``` --->  ```API_KEY = "b1b15e88fa797225412429c1c50c122a1" ```
 
 ## Aplication UI
