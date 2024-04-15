@@ -21,6 +21,7 @@ class weatherApps():
         api = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={LATITUDE}&lon={LONNGTUDE}&appid={API_KEY}")
         api = json.loads(api.content)
         
+        """This commented code is used to know the structure"""
         # with open("weather.json","r") as f:
         #     api = json.load(f)
         
@@ -148,29 +149,6 @@ class weatherApps():
             elif api["weather"][0]["main"] == "Clear": 
                 self.info_symbol.configure(light_image=Image.open("clear.png"),dark_image=Image.open("clear.png"),size=(200,140))
                 self.image_label.configure(image=self.info_symbol)
-        
 
 if __name__ == "__main__":
     weatherApps()
-
-    
-# geolocator = Nominatim(user_agent="MyApp")
-# location = geolocator.geocode("Pare")
-
-# def get_location():
-#     g = geocoder.ip('me')
-#     return g.latlng
-
-# if get_location() == None:
-#     raise ConnectionError("No internet connection, check your network")
-
-# LATITUDE = get_location()[0]
-# LONNGTUDE =  get_location()[1]
-# API_KEY = "c18122a1d8acf06136ce9ec62f2ce9dc"
-
-# print(api)
-# with open("weather.json", "w") as f:
-#     json.dump(api,f,indent=4)
-
-# print("The latitude of the location is: ", location.latitude)
-# print("The longitude of the location is: ", location.longitude)
