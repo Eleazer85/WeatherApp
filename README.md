@@ -13,5 +13,7 @@ If you already have an Openweather API key, change the `API_KEY` in the `openwea
 For exmple: <br>
 ```API_KEY = "API_KEY" ``` --->  ```API_KEY = "b1b15e88fa797225412429c1c50c122a1" ```
 
+***Note: above is a dummy api key only use for example and cannot be used as an api key***
+
 ## Aplication UI
 ![Screenshot (329)](https://github.com/Eleazer85/WeatherApp/assets/72891905/1d4efd17-8a53-41da-9ddf-6355681e4837)
