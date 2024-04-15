@@ -80,7 +80,12 @@ class weatherApps():
             # Create a label to display the image
             self.image_label = customtkinter.CTkLabel(master=self.tabinf, image=self.info_symbol)
             self.image_label.grid(row=1, column=0,padx=(30,0),pady=(0,50))  # Adjust the row and column as needed
-        
+        elif api["weather"][0]["main"] == "Clear":
+            self.info_symbol = customtkinter.CTkImage(light_image=Image.open("clear.png"),dark_image=Image.open("clouds.png"),size=(200,140))
+            # Create a label to display the image
+            self.image_label = customtkinter.CTkLabel(master=self.tabinf, image=self.info_symbol)
+            self.image_label.grid(row=1, column=0,padx=(30,0),pady=(0,50))  # Adjust the row and column as needed
+            
         self.tab_other = customtkinter.CTkTabview(master=self.root,width=500,height=300)
         self.tab_other.place(relx=0.565,rely=0.72,anchor="w")
         self.other = self.tab_other.add("Other Data")
